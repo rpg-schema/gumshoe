@@ -97,9 +97,9 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border py-8 text-center">
         <p className="text-xs text-muted-foreground font-body">
-          GUMSHOE SRD by Robin D. Laws · Published by Pelgrane Press · Encoded as{" "}
+          GUMSHOE SRD by Robin D. Laws · Published by Pelgrane Press · OGL · Encoded as{" "}
           <a href="/gumshoe_srd.ttl" className="text-primary hover:underline">rpg-schema TTL</a>
-          {" "}· OGL
+          {" "} · Made with ❤️ by in Bologna by <a href="https://www.fantasymaps.org" className="text-primary hover:underline">Fantasy Maps</a>
         </p>
       </footer>
     </div>
