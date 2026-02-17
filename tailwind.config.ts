@@ -13,6 +13,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Special Elite', 'cursive'],
+        serif: ['Crimson Text', 'serif'],
+        body: ['Source Sans 3', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +51,15 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        noir: {
+          gold: "hsl(var(--noir-gold))",
+          amber: "hsl(var(--noir-amber))",
+          blood: "hsl(var(--noir-blood))",
+          smoke: "hsl(var(--noir-smoke))",
+          shadow: "hsl(var(--noir-shadow))",
+          paper: "hsl(var(--noir-paper))",
+          ink: "hsl(var(--noir-ink))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
