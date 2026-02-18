@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 const sections = [
   { id: "philosophy", label: "Philosophy" },
@@ -25,7 +25,7 @@ const NavBar = () => {
         <span className="font-display text-primary text-sm tracking-wider">GUMSHOE SRD</span>
         
         {/* Desktop */}
-        <div className="hidden md:flex gap-1">
+        <div className="hidden md:flex items-center gap-1">
           {sections.map(s => (
             <button
               key={s.id}
@@ -35,6 +35,15 @@ const NavBar = () => {
               {s.label}
             </button>
           ))}
+          <div className="w-px h-4 bg-border mx-2" />
+          <a
+            href="/gumshoe_srd.ttl"
+            download="gumshoe_srd.ttl"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors font-body"
+          >
+            <Download className="w-3.5 h-3.5" />
+            TTL
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -55,6 +64,15 @@ const NavBar = () => {
               {s.label}
             </button>
           ))}
+          <div className="h-px bg-border mx-6 my-1" />
+          <a
+            href="/gumshoe_srd.ttl"
+            download="gumshoe_srd.ttl"
+            className="flex items-center gap-2 w-full px-6 py-3 text-sm text-muted-foreground hover:text-primary hover:bg-secondary/30 transition-colors font-body"
+          >
+            <Download className="w-4 h-4" />
+            Download TTL
+          </a>
         </div>
       )}
     </nav>
