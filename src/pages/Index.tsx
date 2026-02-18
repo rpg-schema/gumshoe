@@ -7,14 +7,11 @@ import AbilityGrid from "@/components/gumshoe/AbilityGrid";
 import CombatSection from "@/components/gumshoe/CombatSection";
 import ConditionsSection from "@/components/gumshoe/ConditionsSection";
 import ScenarioSection from "@/components/gumshoe/ScenarioSection";
-import {
-  academicAbilities,
-  interpersonalAbilities,
-  technicalAbilities,
-  generalAbilities,
-} from "@/data/gumshoeData";
+import { GumshoeProvider, useGumshoeData } from "@/context/GumshoeContext";
 
-const Index = () => {
+const GumshoeContent = () => {
+  const { data, loading, source } = useGumshoeData();
+
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
@@ -48,9 +45,9 @@ const Index = () => {
             title="Investigative Abilities"
             subtitle="No die roll ever — if you have the skill, you get the clue"
           />
-          <AbilityGrid abilities={academicAbilities} category="Academic" />
-          <AbilityGrid abilities={interpersonalAbilities} category="Interpersonal" />
-          <AbilityGrid abilities={technicalAbilities} category="Technical" />
+          <AbilityGrid abilities={data.academicAbilities} category="Academic" />
+          <AbilityGrid abilities={data.interpersonalAbilities} category="Interpersonal" />
+          <AbilityGrid abilities={data.technicalAbilities} category="Technical" />
         </section>
 
         {/* General Abilities */}
@@ -60,7 +57,7 @@ const Index = () => {
             title="General Abilities"
             subtitle="1d6 + pool spend vs Difficulty — these keep you alive"
           />
-          <AbilityGrid abilities={generalAbilities} category="All General Abilities" />
+          <AbilityGrid abilities={data.generalAbilities} category="All General Abilities" />
         </section>
 
         {/* Combat */}
@@ -99,11 +96,23 @@ const Index = () => {
         <p className="text-xs text-muted-foreground font-body">
           GUMSHOE SRD by Robin D. Laws · Published by Pelgrane Press · OGL · Encoded as{" "}
           <a href="/gumshoe_srd.ttl" className="text-primary hover:underline">rpg-schema TTL</a>
-          {" "} · Made with ❤️ by in Bologna by <a href="https://www.fantasymaps.org" className="text-primary hover:underline">Fantasy Maps</a>
+          {" "} · Made with ❤️ by in Bologna by{" "}
+          <a href="https://www.fantasymaps.org" className="text-primary hover:underline">Fantasy Maps</a>
+          {!loading && (
+            <span className="ml-2 opacity-50">
+              · data: {source === "ttl" ? "live TTL" : "static"}
+            </span>
+          )}
         </p>
       </footer>
     </div>
   );
 };
+
+const Index = () => (
+  <GumshoeProvider>
+    <GumshoeContent />
+  </GumshoeProvider>
+);
 
 export default Index;
